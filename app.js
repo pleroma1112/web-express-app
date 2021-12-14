@@ -23,7 +23,7 @@ app.use(helmet())
 app.use(logger('combined'));
 let accessLogStream = rfs.createStream('access.log',{
   interval : '1d',
-  path : path.join(__dirname, './log')
+  path : path.join(__dirname, '../log')
 })
 app.use(logger('combined', { stream : accessLogStream }));
 app.use(express.json());
