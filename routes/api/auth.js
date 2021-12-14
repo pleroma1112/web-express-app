@@ -33,7 +33,7 @@ router.post('/login',(req,res,next)=>{
                 msg : 'Wrong ID'
             })
         }
-    }).catch(next(err))
+    }).catch(next)
 })
 
 router.post('/regist',(req,res,next)=>{
@@ -52,15 +52,16 @@ router.post('/regist',(req,res,next)=>{
                     res.json({
                         regist : true
                     })
-                }).catch(next(err))
+                }).catch(next)
             })
         }
-    }).catch(next(err))
+    }).catch(next)
 })
 
 router.get('/logout',(req,res)=>{
     if(req.session.auth){
-        req.session.destroy(()=>{
+        req.session.destroy((err)=>{
+            if(err) throw err
             res.clearCookie(process.env.SESSION_NAME)
             res.json({
                 logout : true
