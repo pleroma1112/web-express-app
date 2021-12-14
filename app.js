@@ -17,7 +17,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.set('trust proxy', 'nginx')
+// app.set('trust proxy', 'nginx')
 
 app.use(helmet())
 app.use(logger('combined'));
